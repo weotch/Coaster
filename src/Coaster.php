@@ -17,7 +17,7 @@ if (!function_exists('json_decode')) {
     throw new TM_Client_Exception('TM needs the JSON PHP extension.');
 }
 
-class TM {
+class Coaster {
 
     private $dec;
     private $public;

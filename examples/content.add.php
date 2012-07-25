@@ -1,13 +1,13 @@
 <?php
 
-require_once "../src/TM.php";
+require_once "../src/Coaster.php";
 
 define('PUBLIC_API_KEY', '');
 define('PRIVATE_API_KEY', '');
 
 $signal_site = '';
-$tm = new TM($signal_site, PUBLIC_API_KEY, PRIVATE_API_KEY, $service_data);
-$tm->exit_on_error = true;
+$coaster = new Coaster($signal_site, PUBLIC_API_KEY, PRIVATE_API_KEY, $service_data);
+$coaster->exit_on_error = true;
 
 $api_data = array(
         'gallery_id' => '3',
@@ -18,7 +18,7 @@ $api_data = array(
         );
 
 try {
-    $res = $tm->call('/content/add', $api_data);
+    $res = $coaster->call('/content/add', $api_data);
     echo 'Results: PASSED';
 } catch( TM_Client_Exception $e ) {
     sleep(3);
