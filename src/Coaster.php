@@ -51,7 +51,7 @@ class Coaster {
 
         $version = $options['version'] ? $options['version'] : self::API_VERSION;
 
-        $this->base_url = 'http://'.$dec.'.thismoment.com/'.$version."/api";
+        $this->base_url = 'https://'.$dec.'.thismoment.com/'.$version."/api";
 
     }
 
