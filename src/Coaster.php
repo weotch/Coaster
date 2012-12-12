@@ -31,7 +31,7 @@ class Coaster {
     public $response_type = "json";
 
     const CLIENT_VERSION = "1.0.1";
-    const API_VERSION    = "v2";
+    const API_VERSION    = "v4";
 
     public static $CURL_OPTIONS = array(
                                         CURLOPT_RETURNTRANSFER => true,
@@ -52,7 +52,6 @@ class Coaster {
         $version = $options['version'] ? $options['version'] : self::API_VERSION;
 
         $this->base_url = 'https://'.$dec.'.thismoment.com/'.$version."/api";
-
     }
 
 
@@ -99,6 +98,7 @@ class Coaster {
             $base_string = http_build_query($params, false, '&');
         }
         $base_string = $secret . $base_string;
+
         return md5($base_string);
     }
 
