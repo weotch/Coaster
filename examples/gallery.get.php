@@ -9,7 +9,10 @@ $signal_site = '';
 $coaster = new Coaster($signal_site, PUBLIC_API_KEY, PRIVATE_API_KEY, $service_data);
 $coaster->exit_on_error = true;
 
-$api_data = array('gallery_id' => '1');
+$api_data = array(
+    'gallery_id' => '1',
+    'environment' => 'brand',
+);
 
 try {
     $res = $coaster->call('/gallery/get', $api_data);
