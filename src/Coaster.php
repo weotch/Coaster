@@ -1,6 +1,6 @@
 <?php
 
-if(!$_SESSION) {
+if(!isset($_SESSION)) {
     @ini_set('session.save_handler', 'files');
     @session_save_path("/tmp");
     @session_cache_expire(3600);
