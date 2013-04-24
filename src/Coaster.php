@@ -49,7 +49,7 @@ class Coaster {
                 $this->$k = $v;
         }
 
-        $version = $options['version'] ? $options['version'] : self::API_VERSION;
+        $version = !empty($options['version']) ? $options['version'] : self::API_VERSION;
 
         $this->base_url = 'https://'.$dec.'.thismoment.com/'.$version."/api";
     }
@@ -78,7 +78,7 @@ class Coaster {
 
 
     public function get_token() {
-        $this->token = $_SESSION['tm-token'] ? $_SESSION['tm-token'] : $this->token;
+        $this->token = !empty($_SESSION['tm-token']) ? $_SESSION['tm-token'] : $this->token;
         return $this->token;
     }
 
@@ -120,7 +120,7 @@ class Coaster {
         $fields_string = '';
         if(is_array($data)) {
             // if media is attached, dont build the query
-            if($data['media_file'])
+            if(!empty($data['media_file']))
                 $fields_string = $data;
             else
                 $fields_string = http_build_query($data, false, '&');
@@ -133,7 +133,7 @@ class Coaster {
             $options[CURLOPT_COOKIE] = session_name() . "=" . $this->token;
 
         $options[CURLOPT_URL]        = $url;
-        $options[CURLOPT_POST]       = count($fields);
+        $options[CURLOPT_POST]       = !empty($fields_string);
         $options[CURLOPT_HTTPHEADER] = array('Content-Length: ' . strlen($fields_string));
         $options[CURLOPT_POSTFIELDS] = $fields_string;
         $options[CURLOPT_VERBOSE]    = $this->debug;
